@@ -31,8 +31,6 @@ dup_lim_exec(int fd, char *cmd, char *argv[])
 	try(close(STDOUT_FILENO) != -1, "close", 0);
 	try(dup2(fd, STDIN_FILENO) != -1, "dup2", 1);
 	try(dup2(fd, STDOUT_FILENO) != -1, "dup2", 1);
-	/*limits?*/
-	environ = NULL;
 	try(execv(cmd, argv) != -1, "execv", 1);
 }
 
